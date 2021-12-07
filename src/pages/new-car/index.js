@@ -12,6 +12,7 @@ import {
   RootStateOrAny,
 } from "react-redux";
 import Head from "next/head";
+import { toast } from "react-toastify";
 
 export default function NewCar() {
   const router = useRouter();
@@ -49,7 +50,7 @@ export default function NewCar() {
         setOpen(true)
       })
       .catch((err) => {
-        alert("erro ao adicionar carro!");
+        toast.error('Erro ao inserir anúncio. Tente novamente')
       });
   };
 
@@ -77,7 +78,7 @@ export default function NewCar() {
         <div className="container mx-auto flex justify-center  ">
           <div className="lg:block sm: mt-4	 box-border p-5 border w-3/4	">
             <h1 className="font-sans text-xl font-light text-center	mb-3 m-auto ..">
-              Cadastro de Carro
+              Novo Anúncio
             </h1>
             {/* <TextField
               fullWidth
@@ -208,8 +209,8 @@ export default function NewCar() {
       ) : (
         <div style={{ height: "100vh" }} className=" flex justify-center">
           <div className="flex items-center	">
-            <div>
-              <h1>VOCÊ PRECISA ESTAR AUTENTICADO(A) PARA CADASTRAR UM CARRO</h1>
+            <div className="" >
+              <h1 style={{textAlign: 'center'}}>VOCÊ PRECISA ESTAR AUTENTICADO(A) PARA CADASTRAR UM CARRO</h1>
               <br />
               <br />
               <div style={{ textAlign: "center" }}>

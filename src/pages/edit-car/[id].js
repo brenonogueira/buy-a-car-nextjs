@@ -47,11 +47,11 @@ export default function EditCar() {
         userId: rd_user?.index?.id,
       })
       .then((res) => {
-        toast.success('Editado com sucesso')
-        router.push('/')
+        toast.success("Editado com sucesso");
+        router.push("/");
       })
       .catch((err) => {
-        toast.error('Erro ao editar')
+        toast.error("Erro ao editar");
       });
   };
 
@@ -70,18 +70,18 @@ export default function EditCar() {
 
   useEffect(() => {
     if (car) {
-      setModel(car.model)
-      setModelYear(car.model_year)
-      setManufactureYear(car.manufacture_year)
-      setMake(car.make)
-      setCarValue(car.car_value)
-      setDescription(car.car_description)
+      setModel(car.model);
+      setModelYear(car.model_year);
+      setManufactureYear(car.manufacture_year);
+      setMake(car.make);
+      setCarValue(car.car_value);
+      setDescription(car.car_description);
     }
-  }, [car])
+  }, [car]);
 
   return (
     <>
-     <Head>
+      <Head>
         <title>Buy a car! - Editar Anúncio</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
@@ -110,7 +110,6 @@ export default function EditCar() {
             />
 
             <div className="sm:block lg:flex">
-
               <input
                 className="mt-4 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-600"
                 id="username"

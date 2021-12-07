@@ -127,9 +127,10 @@ export default function SignUp() {
                     required
                     fullWidth
                     id="phone"
-                    label="Whatsapp"
+                    label="Whatsapp "
                     name="phone"
                     autoComplete="phone"
+                    placeholder="(DD)99999-9999"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                   />
