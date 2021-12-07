@@ -155,10 +155,13 @@ export default function NewCar() {
               onChange={(e) => setMake(e.target.value)}
             /> */}
 
+            <label>
+            </label>
             <input
               className="mt-2 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-600"
               type="text"
-              placeholder="Valor: 200000"
+              required
+              placeholder="200000 (sem ponto ou vírgula)"
               value={car_value}
               onChange={(e) => setCarValue(e.target.value)}
             />

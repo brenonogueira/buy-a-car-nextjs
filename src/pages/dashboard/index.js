@@ -35,6 +35,7 @@ import userActions from "../../store/actions/userActions";
 import { useRouter } from "next/router";
 import { FaTrashAlt, FaEdit } from "react-icons/fa";
 import Head from "next/head";
+import ModalDelete from "./ModalDelele";
 
 function Copyright(props) {
   return (
@@ -131,6 +132,10 @@ export default function Dashboard() {
   const [user_data, setUserData] = useState([]);
   const [userId, setUserId] = useState();
   const [open, setOpen] = useState(true);
+  const [car_id, setCarId] = useState(null);
+
+  const [openModal, setOpenModal] = useState(false);
+  const handleOpen = () => setOpenModal(true);
   // const [token, setToken] = useState(null);
   const toggleDrawer = () => {
     setOpen(!open);
@@ -165,17 +170,17 @@ export default function Dashboard() {
 
 
 
-  const delete_car = (id) => {
-    api
-      .delete(`car/${id}`)
-      .then((res) => {
-        toast.success("Carro apagado com sucesso");
-        dispatch(userActions.profile_cars(rd_user?.index?.id));
-      })
-      .catch((err) => {
-        toast.error("Erro ao apagar carro. Tente novamente");
-      });
-  };
+  // const delete_car = (id) => {
+  //   api
+  //     .delete(`car/${id}`)
+  //     .then((res) => {
+  //       toast.success("Carro apagado com sucesso");
+  //       dispatch(userActions.profile_cars(rd_user?.index?.id));
+  //     })
+  //     .catch((err) => {
+  //       toast.error("Erro ao apagar carro. Tente novamente");
+  //     });
+  // };
 
   //   useEffect(() => {
   //   if(rd_user.index?.id) {
@@ -271,6 +276,7 @@ export default function Dashboard() {
                     //   height: 240,
                     // }}
                     >
+                      <button onClick={() => {setOpenModal(true)}}>aaaa</button>
                       <TableContainer component={Paper}>
                         <Table
                           sx={{ minWidth: 400 }}
@@ -296,7 +302,7 @@ export default function Dashboard() {
                                 </StyledTableCell>
                                 <StyledTableCell className="lg:flex sm:block">
                                   <button onClick={() => {
-                                    delete_car(car.id);
+                                   setCarId(car.id); setOpenModal(true)
                                   }} className="lg: mt-2 sm: ml-0">
                                     <FaTrashAlt
 
@@ -326,6 +332,7 @@ export default function Dashboard() {
               </Container>
             </Box>
           </Box>
+          <ModalDelete setOpenModal={setOpenModal} openModal={openModal} car_id={car_id} />
         </ThemeProvider>
       ) : (
         "SEM ACESSO"
