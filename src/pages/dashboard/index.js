@@ -34,6 +34,7 @@ import {
 import userActions from "../../store/actions/userActions";
 import { useRouter } from "next/router";
 import { FaTrashAlt, FaEdit } from "react-icons/fa";
+import Head from "next/head";
 
 function Copyright(props) {
   return (
@@ -162,7 +163,7 @@ export default function Dashboard() {
     }
   }, [rd_user]);
 
-  
+
 
   const delete_car = (id) => {
     api
@@ -184,6 +185,10 @@ export default function Dashboard() {
 
   return (
     <>
+     <Head>
+        <title>Buy a car! - Painel de  Controle</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       {token ? (
         <ThemeProvider theme={mdTheme}>
           <Box sx={{ display: "flex" }}>
@@ -290,20 +295,24 @@ export default function Dashboard() {
                                   {car.model_year}
                                 </StyledTableCell>
                                 <StyledTableCell className="lg:flex sm:block">
-                                  <FaTrashAlt
-                                    onClick={() => {
-                                      delete_car(car.id);
-                                    }}
-                                    color="red"
-                                    size={18}
-                                    className="lg: mt-2 sm: ml-0"
-                                  />
-                                  <FaEdit
-                                    onClick={() => router?.push(`/edit-car/${car.id}`)}
-                                    color="blue"
-                                    size={18}
-                                    className="lg:ml-2 mt-2 sm: ml-0"
-                                  />
+                                  <button onClick={() => {
+                                    delete_car(car.id);
+                                  }} className="lg: mt-2 sm: ml-0">
+                                    <FaTrashAlt
+
+                                      color="red"
+                                      size={18}
+
+                                    />
+                                  </button>
+
+                                  <button onClick={() => router?.push(`/edit-car/${car.id}`)} className="lg:ml-2 mt-2 sm: ml-0">
+                                    <FaEdit
+                                      color="blue"
+                                      size={18}
+
+                                    />
+                                  </button>
                                 </StyledTableCell>
                               </StyledTableRow>
                             ))}

@@ -33,18 +33,24 @@ export default function Home() {
     api.get("car").then((res) => {
       setData_car(res.data);
     });
-   
+
   }, []);
 
   return (
-    <div className="container mx-auto ">
-      <div className=" p-4 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 ">
-        {data_car
-          ? data_car.map((car) => {
+    <>
+      <Head>
+        <title>Buy a car! - Compre um carro</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+      <div className="container mx-auto ">
+        <div className=" p-4 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 ">
+          {data_car
+            ? data_car.map((car) => {
               return <CardCar car={car} />;
             })
-          : null}
+            : null}
+        </div>
       </div>
-    </div>
+    </>
   );
 }

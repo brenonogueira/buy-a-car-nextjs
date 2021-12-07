@@ -10,9 +10,11 @@ import Link from "@mui/material/Link";
 import { useRouter } from "next/router";
 import api from "../services/api";
 import PlaceholderCar from "../../public/placeholderca.png";
+import Image from "next/image";
 
 export default function CardCar({ car }) {
   const [arquivo, setArquivo] = React.useState();
+
   const router = useRouter();
   console.log(car);
 
@@ -29,16 +31,25 @@ export default function CardCar({ car }) {
   return (
     <div className="flex justify-center">
       <Card sx={{ maxWidth: 400 }}>
-        <CardActionArea>
-          <CardMedia
+        <CardActionArea  onClick={() => router?.push(`/car/${car.id}`)}>
+          {/* <CardMedia
             component="img"
-            width="480"
-            height="480"
+            width="200"
+            // height="480"
             image={car.photos?.length > 0 ? car.photos[0].url : PlaceholderCar}
             alt="car"
-          />
+            style={{height: '10rem'}}
+          /> */}
 
-          <CardContent>
+           <Image
+            src={car.photos?.length > 0 ? car.photos[0].url : PlaceholderCar}
+            width="600px"
+            height="380px"
+            >
+
+           </Image>
+
+          <CardContent style={{height: '7rem'}}>
             <Typography gutterBottom variant="h5" component="div">
               {car.model} -{" "}
               {Intl.NumberFormat("pt-BR", {

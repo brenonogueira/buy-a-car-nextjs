@@ -21,23 +21,24 @@ import {
   RootStateOrAny,
 } from "react-redux";
 import userActions from "../../store/actions/userActions";
+import Head from "next/head";
 
 function Copyright(props) {
   return (
     <Typography
-    variant="body2"
-    color="text.secondary"
-    align="center"
-    {...props}
-  >
-    {"Copyright © "}
-    <Link color="inherit" href="/">
-      Buy a Car Web App 
-    </Link>
-    {/* <Typography>Breno Nogueira Araújo</Typography> */}
-    {new Date().getFullYear()}
-    {"."}
-  </Typography>
+      variant="body2"
+      color="text.secondary"
+      align="center"
+      {...props}
+    >
+      {"Copyright © "}
+      <Link color="inherit" href="/">
+        Buy a Car Web App
+      </Link>
+      {/* <Typography>Breno Nogueira Araújo</Typography> */}
+      {new Date().getFullYear()}
+      {"."}
+    </Typography>
   );
 }
 
@@ -49,7 +50,7 @@ export default function SignIn() {
   const [token, setToken] = useState(null);
   const router = useRouter();
   const dispatch = useDispatch();
- 
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -69,20 +70,26 @@ export default function SignIn() {
       .catch((err) => {
         toast.error('Erro ao entrar. Verifique seus dados e tente novamente!')
       });
+  }
+
+  useEffect(() => {
+    setToken(sessionStorage.getItem('access_token'))
+    console.log('aa')
+  }, [token])
+
+  useEffect(() => {
+    if (token) {
+      router?.push('/')
     }
+  }, [token])
 
-    useEffect(() => {
-     setToken(sessionStorage.getItem('access_token'))
-     console.log('aa')
-    }, [token])
 
-    useEffect(() => {
-      if(token) {
-        router?.push('/')
-      }
-    }, [token])
-
-    return (
+  return (
+    <>
+      <Head>
+        <title>Buy a car! - Entrar</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <ThemeProvider theme={theme}>
         <Container component="main" maxWidth="xs">
           <CssBaseline />
@@ -96,9 +103,9 @@ export default function SignIn() {
           >
             <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
               {/* <LockOutlinedIcon /> */}
-            </Avatar> 
+            </Avatar>
             <Typography component="h1" variant="h5">
-            ENTRAR
+              ENTRAR
             </Typography>
             <Box
               component="form"
@@ -130,14 +137,14 @@ export default function SignIn() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-             
+
               <Button
                 type="submit"
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
               >
-               ENTRAR
+                ENTRAR
               </Button>
               <Grid container>
                 {/* <Grid item xs>
@@ -146,7 +153,7 @@ export default function SignIn() {
                   </Link>
                 </Grid> */}
                 <Grid item>
-                  <Link onClick={() => {router?.push('/sign-up') }} variant="body2">
+                  <Link onClick={() => { router?.push('/sign-up') }} variant="body2">
                     {"Não tem conta? Inscreva-se"}
                   </Link>
                 </Grid>
@@ -156,6 +163,7 @@ export default function SignIn() {
           <Copyright sx={{ mt: 8, mb: 4 }} />
         </Container>
       </ThemeProvider>
-    );
-  };
+    </>
+  );
+};
 

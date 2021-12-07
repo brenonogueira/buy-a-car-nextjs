@@ -67,9 +67,9 @@ const Navbar = () => {
             sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
             className="font-bold"
           >
-          
-           <span className="text-3xl">Buy a Car</span>
-           <FaCarSide size={40} className="ml-1" color="black"/>
+
+            <span className="text-3xl">Buy a Car</span>
+            <FaCarSide size={40} className="ml-1" color="black" />
           </Button>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -115,29 +115,31 @@ const Navbar = () => {
             onClick={() => router?.push("/")}
           >
             BUY A CAR!
-            <FaCarSide size={40} className="ml-1" color="black"/>
+            <FaCarSide size={40} className="ml-1" color="black" />
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex", justifyContent: 'flex-end' } }}>
-            <Button
+            <button
               onClick={() => router?.push("/new-car")}
-              sx={{ my: 2, color: "white", display: "block" }}
-              className="ml-4 bg-blue-800 hover:bg-blue-700 opacity"
+              // sx={{ my: 2, color: "white", display: "block" }}
+              className="ml-4 bg-blue-800 hover:bg-blue-700 py-3 px-6"
+              size="small"
             >
               Anuncie seu Carro
-            </Button>
-            <Button
+            </button>
+            <button
               onClick={() => router?.push("/dashboard")}
-              sx={{ my: 2, color: "white", display: "block" }}
-              className="ml-4 bg-blue-400 hover:bg-blue-700"
+              // sx={{ my: 2, color: "white", display: "block" }}
+              className="ml-4 block bg-blue-400 hover:bg-blue-700 py-3 px-6"
+              size="small"
             >
               Dashboard
-            </Button>
+            </button>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }} className="lg:hidden ">
-               <FaChevronDown/>
+              <IconButton onClick={handleOpenUserMenu} sx={{ flexGrow: 1, display: { xs: "flex", md: "none" }}}>
+                <FaChevronDown />
               </IconButton>
             </Tooltip>
             <Menu
@@ -157,22 +159,22 @@ const Navbar = () => {
               onClose={handleCloseUserMenu}
             >
               <MenuItem onClick={handleCloseNavMenu}>
-              <Button
-              onClick={() => router?.push("/dashboard")}
-              sx={{ my: 2, color: "dark", display: "block" }}
-              // className="ml-4 bg-blue-400 hover:bg-blue-700"
-            >
-              Dashboard
-            </Button>
+                <Button
+                  onClick={() => router?.push("/dashboard")}
+                  sx={{ my: 2, color: "dark", display: "block" }}
+                // className="ml-4 bg-blue-400 hover:bg-blue-700"
+                >
+                  Dashboard
+                </Button>
               </MenuItem>
               <MenuItem onClick={handleCloseNavMenu}>
-              <Button
-              onClick={() => router?.push("/new-car")}
-              sx={{ my: 2, color: "dark", display: "block" }}
-              // className="ml-4 bg-blue-800 hover:bg-blue-700 opacity"
-            >
-              Anuncie seu Carro
-            </Button>
+                <Button
+                  onClick={() => router?.push("/new-car")}
+                  sx={{ my: 2, color: "dark", display: "block" }}
+                // className="ml-4 bg-blue-800 hover:bg-blue-700 opacity"
+                >
+                  Anuncie seu Carro
+                </Button>
               </MenuItem>
             </Menu>
           </Box>
