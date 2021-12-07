@@ -46,6 +46,12 @@ export default function CardCarId({ car }) {
         <p className="subpixel-antialiased font-sans">
           <strong>Marca:</strong> {car.make}
         </p>
+        <p className="subpixel-antialiased font-sans">
+          <strong>Anunciante:</strong> {car.user_name}
+        </p>
+        <p className="subpixel-antialiased font-sans">
+          <strong>Whatsapp:</strong> {car.user_phone}
+        </p>
         <p className="subpixel-antialiased mt-5 font-sans ">
           <strong>Descrição:</strong> <br />
           {car.car_description}
